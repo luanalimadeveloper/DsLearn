@@ -2,6 +2,8 @@ package com.devsuperior.dslearnbds.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,9 +30,11 @@ public class Offer implements Serializable{
 	@JoinColumn(name = "course_id")
 	private Course course;
 	
+	@OneToMany(mappedBy = "offer")
+	private List<Resource> resources = new ArrayList<>();
+	
 	public Offer() {
 	}
-	
 	
 
 	public Offer(Long id, String edition, Instant startMoment, Instant endMoment, Course course) {
@@ -81,7 +86,9 @@ public class Offer implements Serializable{
 		this.course = course;
 	}
 
-
+	public List<Resource> getResources() {
+		return resources;
+	}
 
 	@Override
 	public int hashCode() {
@@ -90,8 +97,6 @@ public class Offer implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -109,8 +114,5 @@ public class Offer implements Serializable{
 			return false;
 		return true;
 	}
-
-	
-	
 
 }
