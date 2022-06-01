@@ -5,20 +5,20 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_content")
-public class Content extends Lesson{
+public class Content extends Lesson {
 	private static final long serialVersionUID = 1L;
-	
+
 	private String textContent;
-	private String viedeoUri;
-	
+	private String videoUri;
+
 	public Content() {
-		
+
 	}
 
-	public Content(Long id, String title, Integer position, Section section, String textContent, String viedeoUri) {
+	public Content(Long id, String title, Integer position, Section section, String textContent, String videoUri) {
 		super(id, title, position, section);
 		this.textContent = textContent;
-		this.viedeoUri = viedeoUri;
+		this.videoUri = videoUri;
 	}
 
 	public String getTextContent() {
@@ -30,11 +30,11 @@ public class Content extends Lesson{
 	}
 
 	public String getViedeoUri() {
-		return viedeoUri;
+		return videoUri;
 	}
 
-	public void setViedeoUri(String viedeoUri) {
-		this.viedeoUri = viedeoUri;
+	public void setViedeoUri(String videoUri) {
+		this.videoUri = videoUri;
 	}
 
 }
