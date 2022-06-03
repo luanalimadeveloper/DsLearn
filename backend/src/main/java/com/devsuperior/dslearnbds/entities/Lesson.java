@@ -35,6 +35,7 @@ public abstract class Lesson implements Serializable{
 	@JoinColumn(name = "section_id")
 	private Section section;
 	
+	@OneToMany(mappedBy = "lesson")
 	private List<Deliver> deliveries = new ArrayList<>();
 	
 	@ManyToMany
@@ -45,8 +46,6 @@ public abstract class Lesson implements Serializable{
 				@JoinColumn(name = "offer_id")
 		}
 	)
-	
-	@OneToMany(mappedBy = "lessonsDone")
 	private Set<Enrollment> enrollmentsDone = new HashSet<>();
 	
 	public Lesson() {
